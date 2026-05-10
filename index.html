@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueBanana Market</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegacion">
+        <div class="brand">
+          <img src="assets/blue-banana.svg" alt="" />
+          <div>
+            <strong>BlueBanana</strong>
+            <span>Platanus Hackathon</span>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-item active" type="button" data-view="market">Mercado</button>
+          <button class="nav-item" type="button" data-view="portfolio">Portafolio</button>
+          <button class="nav-item" type="button" data-view="activity">Actividad</button>
+        </nav>
+        <div class="market-note">
+          <span class="live-dot"></span>
+          Precios movidos solo por ordenes reales.
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Mercado predictivo sin dinero real</p>
+            <h1>Acciones de equipos, liquidadas en bananas azules</h1>
+          </div>
+          <section class="wallet" aria-label="Cuenta">
+            <div class="wallet-balance">
+              <span>Disponible</span>
+              <strong><span id="balance">0</span> BAZ</strong>
+            </div>
+            <button id="registerButton" class="primary-button" type="button">Registrarme</button>
+          </section>
+        </header>
+
+        <section class="ticker-tape" id="tickerTape" aria-label="Ticker de precios"></section>
+
+        <div class="dashboard">
+          <section class="panel market-panel" data-panel="market">
+            <div class="panel-header">
+              <div>
+                <h2>Equipos en competencia</h2>
+                <p>29 equipos compiten por la atencion del mercado.</p>
+              </div>
+              <div class="search-wrap">
+                <input id="teamSearch" type="search" placeholder="Buscar equipo" />
+              </div>
+            </div>
+            <div class="market-table" id="marketTable"></div>
+          </section>
+
+          <aside class="trade-rail">
+            <section class="panel team-card">
+              <div class="team-card-top">
+                <div>
+                  <p class="eyebrow">Activo seleccionado</p>
+                  <h2 id="selectedName">-</h2>
+                </div>
+                <span class="rank-pill" id="selectedRank">#1</span>
+              </div>
+              <canvas id="priceChart" width="640" height="220" aria-label="Grafico de precio"></canvas>
+              <dl class="metric-grid">
+                <div>
+                  <dt>Precio</dt>
+                  <dd><span id="selectedPrice">0</span> BAZ</dd>
+                </div>
+                <div>
+                  <dt>24h</dt>
+                  <dd id="selectedChange">0%</dd>
+                </div>
+                <div>
+                  <dt>Volumen</dt>
+                  <dd><span id="selectedVolume">0</span> BAZ</dd>
+                </div>
+                <div>
+                  <dt>Posicion</dt>
+                  <dd><span id="selectedHolding">0L / 0C</span></dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="panel trade-ticket">
+              <div class="ticket-tabs" role="tablist" aria-label="Operacion">
+                <button class="ticket-tab active" type="button" data-mode="long">Largo</button>
+                <button class="ticket-tab" type="button" data-mode="short">Corto</button>
+              </div>
+              <div class="ticket-tabs" role="tablist" aria-label="Accion">
+                <button class="ticket-tab active" type="button" data-action="open">Abrir</button>
+                <button class="ticket-tab" type="button" data-action="close">Cerrar</button>
+              </div>
+              <label>
+                Acciones
+                <input id="shareAmount" type="number" min="1" step="1" value="10" />
+              </label>
+              <div class="quote-box">
+                <span id="quoteLabel">Costo estimado</span>
+                <strong><span id="quoteCost">0</span> BAZ</strong>
+              </div>
+              <button id="tradeButton" class="primary-button full" type="button">Ejecutar orden</button>
+              <p id="tradeMessage" class="trade-message" role="status"></p>
+            </section>
+          </aside>
+        </div>
+
+        <section class="panel portfolio-panel" data-panel="portfolio">
+          <div class="panel-header">
+            <div>
+              <h2>Mi portafolio</h2>
+              <p>Balance, posiciones y rendimiento acumulado.</p>
+            </div>
+          </div>
+          <div class="portfolio-summary">
+            <div>
+              <span>Valor total</span>
+              <strong><span id="portfolioValue">0</span> BAZ</strong>
+            </div>
+            <div>
+              <span>Invertido</span>
+              <strong><span id="portfolioInvested">0</span> BAZ</strong>
+            </div>
+            <div>
+              <span>P/L no realizado</span>
+              <strong id="portfolioPnL">0 BAZ</strong>
+            </div>
+          </div>
+          <div id="holdingsList" class="holdings-list"></div>
+        </section>
+
+        <section class="panel activity-panel" data-panel="activity">
+          <div class="panel-header">
+            <div>
+              <h2>Actividad del mercado</h2>
+              <p>Ordenes reales ejecutadas en esta cuenta.</p>
+            </div>
+          </div>
+          <div id="activityFeed" class="activity-feed"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="registerModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+      <form class="modal" id="registerForm">
+        <img src="assets/blue-banana.svg" alt="" />
+        <h2 id="registerTitle">Crea tu cuenta</h2>
+        <p>Recibiras 1000 bananas azules para operar acciones de los equipos.</p>
+        <label>
+          Nombre de usuario
+          <input id="usernameInput" type="text" minlength="2" maxlength="24" required placeholder="Ej: platanero_01" />
+        </label>
+        <button class="primary-button full" type="submit">Recibir 1000 BAZ</button>
+      </form>
+    </div>
+
+    <script src="app.js?v=3"></script>
+  </body>
+</html>

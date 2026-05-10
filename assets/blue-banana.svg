@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bananaBody" x1="60" y1="190" x2="210" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C8BFF"/>
+      <stop offset="0.52" stop-color="#37C5FF"/>
+      <stop offset="1" stop-color="#BDF3FF"/>
+    </linearGradient>
+    <linearGradient id="bananaShade" x1="70" y1="174" x2="198" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0459C7" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#0459C7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#07111F"/>
+  <path d="M211.7 66.5C196.3 139.6 135.1 201.5 54.5 194.6C47.4 194 45.3 184.5 51.4 180.9C91.2 157.4 116.9 118.1 128.8 78.9C134.6 59.7 158.2 53.1 172.3 67.3C179.7 74.7 192.1 75.6 200.5 69.4L204.9 66.1C208.1 63.7 212.5 62.8 211.7 66.5Z" fill="url(#bananaBody)"/>
+  <path d="M65.7 183.8C118.3 180 164.8 137.5 188.9 86.7C168.1 141.6 119.1 196.8 54.6 194.6C47.4 194.3 45.4 184.6 51.4 180.9C55.8 178.2 60.1 175.4 64.2 172.4C61.7 177.3 61.9 184.1 65.7 183.8Z" fill="url(#bananaShade)"/>
+  <path d="M205.2 61.4C211.5 56.4 223.1 56.6 230 62.1C220.2 71.1 213.4 75.4 200.2 77.2C198.6 70.2 199.7 65.8 205.2 61.4Z" fill="#123152"/>
+  <path d="M48.9 178.3C42.1 182 33.2 188.1 29 197.1C39.9 204.9 50.2 205.2 61.1 197.7C57.7 190 54.5 184.6 48.9 178.3Z" fill="#0A2A48"/>
+  <path d="M91.5 160.9C124.9 151.5 154.8 123.3 172 88.2" stroke="#D9FBFF" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
+</svg>
